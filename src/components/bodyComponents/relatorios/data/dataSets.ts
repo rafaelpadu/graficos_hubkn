@@ -1,5 +1,5 @@
-export const dataSet = {
-  vendedor1: {
+export const dataSet = [
+  {
     nome: "Bruno Schimit",
     ligações: 200,
     tempo: 456,
@@ -10,7 +10,7 @@ export const dataSet = {
     ticketMedio: 2000,
     backgroundColor: "rgba(255, 99, 132, 0.2)",
   },
-  vendedor2: {
+  {
     nome: "Carlos Beltrão",
     ligações: 200,
     tempo: 456,
@@ -21,7 +21,7 @@ export const dataSet = {
     ticketMedio: 5000,
     backgroundColor: "rgba(54, 162, 235, 0.2)",
   },
-  vendedor3: {
+  {
     nome: "Ana Vasconcelos",
     ligações: 200,
     tempo: 456,
@@ -32,7 +32,7 @@ export const dataSet = {
     ticketMedio: 1500,
     backgroundColor: "rgba(255, 206, 86, 0.2)",
   },
-  vendedor4: {
+  {
     nome: "Ricardo Brandão",
     ligações: 200,
     tempo: 456,
@@ -43,4 +43,4 @@ export const dataSet = {
     ticketMedio: 3000,
     backgroundColor: "rgba(75, 192, 192, 0.2)",
   },
-};
+];

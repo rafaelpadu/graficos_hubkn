@@ -38,10 +38,10 @@ const useStyles = makeStyles({
   },
 });
 export enum Filtros {
-  Ligacoes = "Ligações",
-  Tempo = "Tempo em chamada (min)",
-  Email = "E-mails enviados",
-  Reuniao = "Reuniões agendadas",
+  ligacoes = "Ligações",
+  tempo = "Tempo em chamada (min)",
+  email = "E-mails enviados",
+  reuniao = "Reuniões agendadas",
 }
 
 const negativo = (a: Filtros[], b: Filtros[]) =>
@@ -62,10 +62,10 @@ const FiltrosDialog: React.FunctionComponent<Props> = ({
   const classes = useStyles();
   const [checked, setChecked] = useState<Filtros[]>([]);
   const [left, setLeft] = useState<Filtros[]>([
-    Filtros.Reuniao,
-    Filtros.Tempo,
-    Filtros.Email,
-    Filtros.Ligacoes,
+    Filtros.reuniao,
+    Filtros.tempo,
+    Filtros.email,
+    Filtros.ligacoes,
   ]);
   const [right, setRight] = useState<Filtros[]>([]);
   const leftChecked = intersecao(checked, left);
