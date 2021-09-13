@@ -128,7 +128,6 @@ const FiltrosDialog: React.FunctionComponent<Props> = ({
       <Divider />
       <List role="list" component="div" className={classes.list}>
         {itens.map((val: Filtros) => {
-          const labelId = `transfer-list-all-item-${val}-label`;
           return (
             <ListItem
               button
@@ -141,11 +140,10 @@ const FiltrosDialog: React.FunctionComponent<Props> = ({
                   checked={checked.indexOf(val) !== -1}
                   tabIndex={-1}
                   disableRipple
-                  inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`${val}`}>
-                Teste
+              <ListItemText id={val} primary={`${val}`}>
+                ...
               </ListItemText>
             </ListItem>
           );
