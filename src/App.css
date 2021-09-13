@@ -6,6 +6,9 @@
 .App {
   text-align: center;
   background-color: #eee;
+  top: 0;
+  height: 100vh;
+  position: relative;
 }
 
 .App-logo {

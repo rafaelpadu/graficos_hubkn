@@ -42,6 +42,9 @@ export enum Filtros {
   tempo = "Tempo em chamada (min)",
   email = "E-mails enviados",
   reuniao = "Reuniões agendadas",
+  negocios = "Negócios Fechados",
+  valorTotal = "Valor Total",
+  ticketMedio = "Ticket Médio",
 }
 
 const negativo = (a: Filtros[], b: Filtros[]) =>
@@ -50,23 +53,31 @@ const intersecao = (a: Filtros[], b: Filtros[]) =>
   a.filter((value) => b.indexOf(value) !== -1);
 const unir = (a: Filtros[], b: Filtros[]) => [...a, ...negativo(b, a)];
 interface Props {
-  openDialog: boolean;
-  handleCloseDialog: () => void;
   filtrosSelec: (arg: Filtros[]) => void;
+  qualFiltro: number;
 }
 const FiltrosDialog: React.FunctionComponent<Props> = ({
-  openDialog,
-  handleCloseDialog,
   filtrosSelec,
+  qualFiltro,
 }) => {
+  let filtrosDesejados: Filtros[] = [];
   const classes = useStyles();
   const [checked, setChecked] = useState<Filtros[]>([]);
-  const [left, setLeft] = useState<Filtros[]>([
-    Filtros.reuniao,
-    Filtros.tempo,
-    Filtros.email,
-    Filtros.ligacoes,
-  ]);
+  if (qualFiltro === 1) {
+    filtrosDesejados = [
+      Filtros.reuniao,
+      Filtros.tempo,
+      Filtros.email,
+      Filtros.ligacoes,
+    ];
+  } else {
+    filtrosDesejados = [
+      Filtros.negocios, //Nao consegui fazer um grafico que compara dados tão distantes como esses tres
+      Filtros.valorTotal,
+      Filtros.ticketMedio,
+    ];
+  }
+  const [left, setLeft] = useState<Filtros[]>(filtrosDesejados);
   const [right, setRight] = useState<Filtros[]>([]);
   const leftChecked = intersecao(checked, left);
   const rightChecked = intersecao(checked, right);
@@ -146,39 +157,33 @@ const FiltrosDialog: React.FunctionComponent<Props> = ({
     </Card>
   );
   return (
-    <Dialog open={openDialog} onClose={handleCloseDialog} maxWidth="lg">
-      <DialogTitle className={classes.dialogTitle}>
-        {" "}
-        Selecione os tipos de Relatórios Desejados
-      </DialogTitle>
-      <Grid
-        container
-        className={classes.gridMain}
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Grid item>{cardList("Escolhas", left)}</Grid>
-        <Grid item>
-          <Grid container direction="column" alignItems="center">
-            <IconButton
-              className={classes.button}
-              onClick={handleCheckRight}
-              disabled={leftChecked.length === 0}
-            >
-              <ChevronRight />
-            </IconButton>
-            <IconButton
-              className={classes.button}
-              onClick={handleCheckLeft}
-              disabled={rightChecked.length === 0}
-            >
-              <ChevronLeft />
-            </IconButton>
-          </Grid>
+    <Grid
+      container
+      className={classes.gridMain}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Grid item>{cardList("Escolhas", left)}</Grid>
+      <Grid item>
+        <Grid container direction="column" alignItems="center">
+          <IconButton
+            className={classes.button}
+            onClick={handleCheckRight}
+            disabled={leftChecked.length === 0}
+          >
+            <ChevronRight />
+          </IconButton>
+          <IconButton
+            className={classes.button}
+            onClick={handleCheckLeft}
+            disabled={rightChecked.length === 0}
+          >
+            <ChevronLeft />
+          </IconButton>
         </Grid>
-        <Grid item>{cardList("Escolhidos", right)}</Grid>
       </Grid>
-    </Dialog>
+      <Grid item>{cardList("Escolhidos", right)}</Grid>
+    </Grid>
   );
 };
 export default FiltrosDialog;

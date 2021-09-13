@@ -10,12 +10,12 @@ import {
 import { AccountCircle, Notifications } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState } from "react";
-import Logo from "../assets/hubkn_Logo-1.png";
+
 import DrawerP from "./DrawerP";
 
 const useStyles = makeStyles({
   mainMenu: {
-    backgroundColor: "#eee",
+    backgroundColor: "#047cf4",
     display: "flex",
     flexDirection: "row",
     height: "90px",
@@ -37,24 +37,18 @@ const Header: React.FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const classes = useStyles();
 
-  const handleMenuClose: () => void = () => setMenuOpen(false);
   return (
-    <header>
+    <div>
       <AppBar position="static" className={classes.mainMenu}>
         <div className={classes.leftItems}>
           <Toolbar>
             <IconButton edge="start" onClick={() => setOpenDrawer(!openDrawer)}>
-              <MenuIcon />
+              <MenuIcon style={{ color: "#eee" }} />
             </IconButton>
           </Toolbar>
-          <img
-            src={Logo}
-            alt="Logo Hubkn"
-            style={{ width: "157px", height: "45px", alignSelf: "center" }}
-          />
         </div>
         <div className={classes.rightItems}>
-          <IconButton color="primary">
+          <IconButton style={{ color: "#eee" }}>
             <Badge badgeContent={11} color="secondary">
               <Notifications style={{ width: "35px", height: "35px" }} />
             </Badge>
@@ -63,28 +57,17 @@ const Header: React.FunctionComponent = () => {
             edge="end"
             aria-haspopup="true"
             onClick={() => setMenuOpen(true)}
-            color="primary"
+            style={{ color: "#eee" }}
           >
             <AccountCircle style={{ width: "35px", height: "35px" }} />
           </IconButton>
         </div>
-        <Menu
-          anchorOrigin={{ vertical: "top", horizontal: "right" }}
-          keepMounted
-          transformOrigin={{ vertical: "top", horizontal: "right" }}
-          open={menuOpen}
-          onClose={handleMenuClose}
-        >
-          <MenuItem>Perfil</MenuItem>
-          <MenuItem>Configurações</MenuItem>
-          {/* <MenuItem>Log-Out</MenuItem>//TODO se conseguir fazer tela de login e registro */}
-        </Menu>
       </AppBar>
       <DrawerP
         openDrawer={openDrawer}
         handleOpenDrawer={() => setOpenDrawer(false)}
       />
-    </header>
+    </div>
   );
 };
 export default Header;
