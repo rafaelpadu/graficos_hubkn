@@ -11,7 +11,7 @@ const Body: React.FunctionComponent = () => {
     <Switch>
       <React.Fragment>
         <main>
-          <Route exact path="/performance/geral">
+          <Route exact path="/">
             <DashBoardGeralPerf />
           </Route>
           <Route exact path="/performance/dashboards">

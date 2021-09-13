@@ -78,6 +78,7 @@ function makeDataSets(filtros: Filtros[]) {
           dataInfo.push(value);
         }
       }
+      return dataInfo;
     });
     console.log(dataInfo);
     let obj = {

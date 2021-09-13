@@ -3,8 +3,6 @@ import {
   Badge,
   IconButton,
   makeStyles,
-  Menu,
-  MenuItem,
   Toolbar,
 } from "@material-ui/core";
 import { AccountCircle, Notifications } from "@material-ui/icons";
@@ -34,7 +32,6 @@ const useStyles = makeStyles({
 
 const Header: React.FunctionComponent = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const classes = useStyles();
 
   return (
@@ -53,12 +50,7 @@ const Header: React.FunctionComponent = () => {
               <Notifications style={{ width: "35px", height: "35px" }} />
             </Badge>
           </IconButton>
-          <IconButton
-            edge="end"
-            aria-haspopup="true"
-            onClick={() => setMenuOpen(true)}
-            style={{ color: "#eee" }}
-          >
+          <IconButton edge="end" aria-haspopup="true" style={{ color: "#eee" }}>
             <AccountCircle style={{ width: "35px", height: "35px" }} />
           </IconButton>
         </div>

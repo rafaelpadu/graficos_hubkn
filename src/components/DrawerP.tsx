@@ -86,7 +86,7 @@ const DrawerP: React.FunctionComponent<Props> = ({
                 <Collapse in={openList2} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
                     <Link
-                      to={"/performance/geral"}
+                      to={"/"}
                       style={{ textDecoration: "none", color: "inherit" }}
                       onClick={handler}
                     >
